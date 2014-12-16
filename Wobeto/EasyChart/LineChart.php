@@ -181,7 +181,6 @@
             $this->computeAxis();
             $this->computeLayout();
             $this->createImage();
-            $this->plot->printLogo();
             $this->plot->printTitle();
             if (!$this->isEmptyDataSet(2)) {
                 $this->printAxis();

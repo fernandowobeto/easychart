@@ -53,13 +53,7 @@
    
     class Plot {
         // Style properties
-        protected $title;
-        
-        /**
-         * Location of the logo. Can be overriden to your personalized logo.
-         */
-        protected $logoFileName;
-        
+        protected $title;       
         /**
          * Outer area, whose dimension is the same as the PNG returned.
          */
@@ -265,17 +259,6 @@
         }
 
         /**
-         * Print the logo image to the image.
-         */
-        public function printLogo() {
-            // @$logoImage = imageCreateFromPNG($this->logoFileName);
-
-            // if ($logoImage) {
-            //     imagecopymerge($this->img, $logoImage, 2 * $this->outerPadding->left, $this->outerPadding->top, 0, 0, imagesx($logoImage), imagesy($logoImage), 100);
-            // }
-        }
-
-        /**
          * Renders to a file or to standard output.
          *
          * @param fileName File name (optional)
@@ -298,15 +281,6 @@
          */
         public function setTitle($title) {
             $this->title = $title;
-        }
-
-        /**
-         * Sets the logo image file name.
-         *
-         * @param string New logo image file name
-         */
-        public function setLogoFileName($logoFileName) {
-            $this->logoFileName = $logoFileName;
         }
 
         /**

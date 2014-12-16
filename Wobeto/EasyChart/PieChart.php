@@ -54,19 +54,6 @@
         }
         
         /**
-         * Compare two sampling point values, order from biggest to lowest value.
-         *
-         * @param double first value
-         * @param double second value
-         * @return integer result of the comparison
-         */
-        protected function sortPie($v1, $v2) {
-            return $v1[0] == $v2[0] ? 0 :
-                $v1[0] > $v2[0] ? -1 :
-                1;
-        }
-        
-        /**
          * Compute pie values in percentage and sort them.
          */
         protected function computePercent() {
@@ -86,7 +73,10 @@
 
             // Sort data points
             if ($this->config->getSortDataPoint()) {
-                usort($this->percent, array("PieChart", "sortPie"));
+                usort($this->percent, function($v1, $v2) {
+                    return $v1[0] == $v2[0] ? 0 :
+                        $v1[0] > $v2[0] ? -1 :1;
+                });
             }
         }
 
@@ -252,7 +242,6 @@
             $this->computePercent();
             $this->computeLayout();
             $this->createImage();
-            $this->plot->printLogo();
             $this->plot->printTitle();
             $this->printPie();
             $this->printCaption();
