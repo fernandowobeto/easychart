@@ -22,6 +22,9 @@
     class PieChart extends Chart {
         protected $pieCenterX;
         protected $pieCenterY;
+
+        protected $labelFormat = '%01.2f';
+        protected $showValues  = false;
     
         /**
          * Constructor of a pie chart.
@@ -32,6 +35,12 @@
         public function __construct($width = 600, $height = 250) {
             parent::__construct($width, $height);
             $this->plot->setGraphPadding(new Padding(15, 10, 30, 30));
+        }
+
+        public function showValues($boolean){
+            if(is_bool($boolean)){
+                $this->showValues = $boolean;
+            }
         }
 
         /**
@@ -67,8 +76,7 @@
 
             foreach ($pointList as $point) {
                 $percent = $this->total == 0 ? 0 : 100 * $point->getY() / $this->total;
-
-                array_push($this->percent, array($percent, $point));
+                array_push($this->percent, array($percent, $point, $point->getY()));
             }
 
             // Sort data points
@@ -179,11 +187,13 @@
             $text = $this->plot->getText();
             $primitive = $this->plot->getPrimitive();
             
-            $angle1 = 0;
+            $angle1       = 0;
             $percentTotal = 0;
 
+            // var_dump($this->percent);
+
             foreach ($this->percent as $a) {
-                list ($percent, $point) = $a;
+                list ($percent, $point, $total) = $a;
 
                 // If value is null, the arc isn't drawn, no need to display percent
                 if ($percent <= 0) {
@@ -194,7 +204,12 @@
                 $angle2 = $percentTotal * 2 * M_PI / 100;
 
                 $angle = $angle1 + ($angle2 - $angle1) / 2;
-                $label = number_format($percent) . "%";
+
+                if($this->showValues === true){
+                    $label = sprintf($this->labelFormat, $total);
+                }else{
+                    $label = sprintf($this->labelFormat, $percent);    
+                }
 
                 $x = cos($angle) * ($this->pieWidth + 35) / 2 + $this->pieCenterX;
                 $y = sin($angle) * ($this->pieHeight + 35) / 2 + $this->pieCenterY;

@@ -29,6 +29,10 @@
          * The data set.
          */
         protected $dataSet;
+        /**
+         * Format label values
+         */
+        protected $labelFormat;
     
         /**
          * Plot (holds graphical attributes).
@@ -75,6 +79,12 @@
          */
         public function setDataSet($dataSet) {
             $this->dataSet = $dataSet;
+        }
+
+        public function setLabelFormat($format){
+            if(is_string($format)){
+                $this->labelFormat = $format;    
+            }
         }
         
         /**
