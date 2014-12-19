@@ -1,3 +1,9 @@
+EasyChart
+=========
+PHP chart library based in Libchart
+
+[![Latest Stable Version](https://poser.pugx.org/wobeto/easychart/v/stable.svg)](https://packagist.org/packages/wobeto/easychart) [![Total Downloads](https://poser.pugx.org/wobeto/easychart/downloads.svg)](https://packagist.org/packages/wobeto/easychart) [![Latest Unstable Version](https://poser.pugx.org/wobeto/easychart/v/unstable.svg)](https://packagist.org/packages/wobeto/easychart) [![License](https://poser.pugx.org/wobeto/easychart/license.svg)](https://packagist.org/packages/wobeto/easychart)
+
 ## Installation
 
 Add wobeto/easychart to your composer.json file:
