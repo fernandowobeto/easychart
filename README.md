@@ -51,6 +51,7 @@ Horizontal Bar Chart
 use Wobeto\EasyChart\HorizontalBarChart;
 use Wobeto\EasyChart\Model\XYDataSet;
 use Wobeto\EasyChart\Model\Point;
+use Wobeto\EasyChart\View\Primitive\Padding;
 
 $chart = new HorizontalBarChart(330, 170);
 
