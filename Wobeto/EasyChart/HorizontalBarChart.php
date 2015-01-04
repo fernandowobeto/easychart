@@ -52,21 +52,28 @@
          * Print the axis.
          */
         protected function printAxis() {
-            $minValue = $this->axis->getLowerBoundary();
-            $maxValue = $this->axis->getUpperBoundary();
+            $minValue  = $this->axis->getLowerBoundary();
+            $maxValue  = $this->axis->getUpperBoundary();
             $stepValue = $this->axis->getTics();
-
+            
             // Get graphical obects
-            $img = $this->plot->getImg();
-            $palette = $this->plot->getPalette();
-            $text = $this->plot->getText();
+            $img       = $this->plot->getImg();
+            $palette   = $this->plot->getPalette();
+            $text      = $this->plot->getText();
+            $primitive = $this->plot->getPrimitive();
             
             // Get the graph area
             $graphArea = $this->plot->getGraphArea();
+            
+            $color     = $palette->backgroundColor[1];
 
             // Horizontal axis
             for ($value = $minValue; $value <= $maxValue; $value += $stepValue) {
                 $x = $graphArea->x1 + ($value - $minValue) * ($graphArea->x2 - $graphArea->x1) / ($this->axis->displayDelta);
+
+                if($value != 0){
+                    $primitive->line(($x - 1), $graphArea->y1,  ($x - 1), $graphArea->y2, $color);
+                }                
 
                 imagerectangle($img, $x - 1, $graphArea->y2 + 2, $x, $graphArea->y2 + 3, $palette->axisColor[0]->getColor($img));
                 imagerectangle($img, $x - 1, $graphArea->y2, $x, $graphArea->y2 + 1, $palette->axisColor[1]->getColor($img));
@@ -168,11 +175,11 @@
                     }
                     
                     // Draw the horizontal bar
-	                imagefilledrectangle($img, $graphArea->x1 + 1, $y1, $xmax, $y2, $shadowColor->getColor($img));
+	                imagefilledrectangle($img, $graphArea->x1, $y1, $xmax, $y2, $shadowColor->getColor($img));
                     
 	                // Prevents drawing a small box when x = 0
                     if ($graphArea->x1 != $xmax) {
-                        imagefilledrectangle($img, $graphArea->x1 + 2, $y1 + 1, $xmax - 4, $y2, $color->getColor($img));
+                        imagefilledrectangle($img, $graphArea->x1, $y1, $xmax, $y2, $color->getColor($img));
                     }
                 }
             }

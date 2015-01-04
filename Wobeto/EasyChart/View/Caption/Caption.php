@@ -58,7 +58,7 @@
                 $boxY2 = $boxY1 + $this->labelBoxHeight;
 
                 $primitive->outlinedBox($boxX1, $boxY1, $boxX2, $boxY2, $palette->axisColor[0], $palette->axisColor[1]);
-                imagefilledrectangle($img, $boxX1 + 2, $boxY1 + 2, $boxX2 - 2, $boxY2 - 2, $color->getColor($img));
+                imagefilledrectangle($img, $boxX1, $boxY1, $boxX2, $boxY2, $color->getColor($img));
 
                 $text->printText($img, $boxX2 + 5, $boxY1 + $this->labelBoxHeight / 2, $this->plot->getTextColor(), $label, $text->fontCondensed, $text->VERTICAL_CENTER_ALIGN);
 

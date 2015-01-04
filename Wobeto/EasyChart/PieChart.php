@@ -89,30 +89,6 @@
         }
 
         /**
-         * Creates the pie chart image.
-         */
-        protected function createImage() {
-            parent::createImage();
-
-            // Get graphical obects
-            $img = $this->plot->getImg();
-            $palette = $this->plot->getPalette();
-            $primitive = $this->plot->getPrimitive();
-            
-            // Get the graph area
-            $graphArea = $this->plot->getGraphArea();
-
-            // Legend box
-            $primitive->outlinedBox($graphArea->x1, $graphArea->y1, $graphArea->x2, $graphArea->y2, $palette->axisColor[0], $palette->axisColor[1]);
-
-            // Aqua-like background
-            for ($i = $graphArea->y1 + 2; $i < $graphArea->y2 - 1; $i++) {
-                $color = $palette->backgroundColor[($i + 3) % 4];
-                $primitive->line($graphArea->x1 + 2, $i, $graphArea->x2 - 2, $i, $color);
-            }
-        }
-
-        /**
          * Renders the caption.
          */
         protected function printCaption() {
@@ -161,10 +137,10 @@
                     continue;
                 }
                 
-                $color = $colorArray[$i % count($colorArray)];
-
+                $color        = $colorArray[$i % count($colorArray)];
+                
                 $percentTotal += $percent;
-                $newAngle = $percentTotal * 360 / 100;
+                $newAngle     = $percentTotal * 360 / 100;
 
                 // imagefilledarc doesn't like null values (#1)
                 if ($newAngle - $oldAngle >= 1) {
@@ -172,7 +148,6 @@
                 }
 
                 $oldAngle = $newAngle;
-
                 $i++;
             }
         }
@@ -233,11 +208,6 @@
             // Get the pie color set
             $pieColorSet = $palette->pieColorSet;
             $pieColorSet->reset();
-
-            // Silhouette
-            for ($cy = $this->pieCenterY + $this->pieDepth / 2; $cy >= $this->pieCenterY - $this->pieDepth / 2; $cy--) {
-                $this->drawDisc($cy, $palette->pieColorSet->shadowColorList, IMG_ARC_EDGED);
-            }
 
             // Top
             $this->drawDisc($this->pieCenterY - $this->pieDepth / 2, $palette->pieColorSet->colorList, IMG_ARC_PIE);

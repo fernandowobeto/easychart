@@ -18,6 +18,7 @@
 
     use Wobeto\EasyChart\View\Caption\Caption;
     use Wobeto\EasyChart\View\Primitive\Padding;
+    use Wobeto\EasyChart\View\Color\Color;
 
     class VerticalBarChart extends BarChart {
         /**
@@ -52,21 +53,28 @@
          * Print the horizontal and veritcal axis.
          */
         protected function printAxis() {
-            $minValue = $this->axis->getLowerBoundary();
-            $maxValue = $this->axis->getUpperBoundary();
+            $minValue  = $this->axis->getLowerBoundary();
+            $maxValue  = $this->axis->getUpperBoundary();
             $stepValue = $this->axis->getTics();
-
+            
             // Get graphical obects
-            $img = $this->plot->getImg();
-            $palette = $this->plot->getPalette();
-            $text = $this->plot->getText();
+            $img       = $this->plot->getImg();
+            $palette   = $this->plot->getPalette();
+            $text      = $this->plot->getText();
+            $primitive = $this->plot->getPrimitive();
             
             // Get the graph area
             $graphArea = $this->plot->getGraphArea();
+
+            $color = $palette->backgroundColor[1];
             
             // Vertical axis
             for ($value = $minValue; $value <= $maxValue; $value += $stepValue) {
                 $y = $graphArea->y2 - ($value - $minValue) * ($graphArea->y2 - $graphArea->y1) / ($this->axis->displayDelta);
+
+                if($value != 0){
+                    $primitive->line($graphArea->x1, ($y + 0.5), $graphArea->x2, ($y - 0.5), $color);
+                }
 
                 imagerectangle($img, $graphArea->x1 - 3, $y, $graphArea->x1 - 2, $y + 1, $palette->axisColor[0]->getColor($img));
                 imagerectangle($img, $graphArea->x1 - 1, $y, $graphArea->x1, $y + 1, $palette->axisColor[1]->getColor($img));
@@ -167,11 +175,11 @@
                     }
 
                     // Draw the vertical bar
-                    imagefilledrectangle($img, $x1, $ymin, $x2, $graphArea->y2 - 1, $shadowColor->getColor($img));
+                    imagefilledrectangle($img, $x1, $ymin, $x2, $graphArea->y2, $shadowColor->getColor($img));
 
                     // Prevents drawing a small box when y = 0
                     if ($ymin != $graphArea->y2) {
-                        imagefilledrectangle($img, $x1 + 1, $ymin + 1, $x2 - 4, $graphArea->y2 - 1, $color->getColor($img));
+                        imagefilledrectangle($img, $x1, $ymin, $x2, $graphArea->y2, $color->getColor($img));
                     }
                 }
             }

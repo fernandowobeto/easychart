@@ -32,10 +32,10 @@
          * @param integer alpha [0..255]
          */
         public function __construct($red, $green, $blue, $alpha = 0) {
-            $this->red = (int) $red;
-            $this->green = (int) $green;
-            $this->blue = (int) $blue;
-            $this->alpha = (int) round($alpha * 127.0 / 255);
+            $this->red     = (int) $red;
+            $this->green   = (int) $green;
+            $this->blue    = (int) $blue;
+            $this->alpha   = (int) round($alpha * 127.0 / 255);
         }
         
         /**

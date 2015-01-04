@@ -47,21 +47,28 @@
          * Print the axis.
          */
         protected function printAxis() {
-            $minValue = $this->axis->getLowerBoundary();
-            $maxValue = $this->axis->getUpperBoundary();
+            $minValue  = $this->axis->getLowerBoundary();
+            $maxValue  = $this->axis->getUpperBoundary();
             $stepValue = $this->axis->getTics();
-
+            
             // Get graphical obects
-            $img = $this->plot->getImg();
-            $palette = $this->plot->getPalette();
-            $text = $this->plot->getText();
+            $img       = $this->plot->getImg();
+            $palette   = $this->plot->getPalette();
+            $text      = $this->plot->getText();
+            $primitive = $this->plot->getPrimitive();
             
             // Get the graph area
             $graphArea = $this->plot->getGraphArea();
             
+            $color     = $palette->backgroundColor[1];
+            
             // Vertical axis
             for ($value = $minValue; $value <= $maxValue; $value += $stepValue) {
                 $y = $graphArea->y2 - ($value - $minValue) * ($graphArea->y2 - $graphArea->y1) / ($this->axis->displayDelta);
+
+                if($value != 0){
+                    $primitive->line($graphArea->x1, ($y + 0.5), $graphArea->x2, ($y - 0.5), $color);
+                }                
 
                 imagerectangle($img, $graphArea->x1 - 3, $y, $graphArea->x1 - 2, $y + 1, $palette->axisColor[0]->getColor($img));
                 imagerectangle($img, $graphArea->x1 - 1, $y, $graphArea->x1, $y + 1, $palette->axisColor[1]->getColor($img));
@@ -138,8 +145,7 @@
 
                     // Draw line 
                     if ($x1) {
-                        $primitive->line($x1, $y1, $x2, $y2, $lineColor, 4);
-                        $primitive->line($x1, $y1 - 1, $x2, $y2 - 1, $lineColorShadow, 2);
+                        $primitive->line($x1, $y1, $x2, $y2, $lineColor, 3);
                     }
                     
                     $x1 = $x2;

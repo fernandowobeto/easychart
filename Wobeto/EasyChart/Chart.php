@@ -39,6 +39,8 @@
          */
         protected $plot;
 
+        protected $vertical_axis = array();
+
         /**
          * Abstract constructor of Chart.
          *

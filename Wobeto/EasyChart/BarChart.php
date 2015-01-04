@@ -56,21 +56,15 @@
             parent::createImage();
 
             // Get graphical obects
-            $img = $this->plot->getImg();
-            $palette = $this->plot->getPalette();
-            $text = $this->plot->getText();
+            $img       = $this->plot->getImg();
+            $palette   = $this->plot->getPalette();
+            $text      = $this->plot->getText();
             $primitive = $this->plot->getPrimitive();
             
             // Get the graph area
             $graphArea = $this->plot->getGraphArea();
 
-            // Aqua-like background
-            for ($i = $graphArea->y1; $i < $graphArea->y2; $i++) {
-                $color = $palette->backgroundColor[($i + 3) % 4];
-                $primitive->line($graphArea->x1, $i, $graphArea->x2, $i, $color);
-            }
-
-            // Axis
+            // Axis (X/Y)
             imagerectangle($img, $graphArea->x1 - 1, $graphArea->y1, $graphArea->x1, $graphArea->y2, $palette->axisColor[0]->getColor($img));
             imagerectangle($img, $graphArea->x1 - 1, $graphArea->y2, $graphArea->x2, $graphArea->y2 + 1, $palette->axisColor[0]->getColor($img));
         }

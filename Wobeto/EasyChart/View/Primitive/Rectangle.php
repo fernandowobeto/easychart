@@ -16,6 +16,8 @@
     
     namespace Wobeto\EasyChart\View\Primitive;
 
+    use Wobeto\EasyChart\View\Primitive\Padding;
+
     class Rectangle {
         /**
          * Top left X.
@@ -58,7 +60,7 @@
          *
          * @return Padded rectangle
          */
-        public function getPaddedRectangle($padding) {
+        public function getPaddedRectangle(Padding $padding) {
             $rectangle = new Rectangle(
                     $this->x1 + $padding->left,
                     $this->y1 + $padding->top,
