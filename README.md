@@ -30,19 +30,18 @@ use Wobeto\EasyChart\VerticalBarChart;
 use Wobeto\EasyChart\Model\XYDataSet;
 use Wobeto\EasyChart\Model\Point;
 
-
 $chart = new VerticalBarChart(500,250);
-	
+
 $dataSet = new XYDataSet();
-$dataSet->addPoint(new Point("Jan 2005", 273));
-$dataSet->addPoint(new Point("Feb 2005", 321));
-$dataSet->addPoint(new Point("March 2005", 442));
-$dataSet->addPoint(new Point("April 2005", 711));
+$dataSet->addPoint(new Point("2014", 285));
+$dataSet->addPoint(new Point("2015", 34));
 $chart->setDataSet($dataSet);
 
-$chart->setTitle("Monthly usage for www.example.com");
-$chart->render();
+$chart->setTitle("Annual usage for easychart");
+echo $chart->render();
 ```
+
+![Vertical Bar](https://github.com/fernandowobeto/easychart/raw/master/docs/images/vertical_bar.png)
 
 Horizontal Bar Chart
 --------------------
@@ -53,7 +52,7 @@ use Wobeto\EasyChart\Model\XYDataSet;
 use Wobeto\EasyChart\Model\Point;
 use Wobeto\EasyChart\View\Primitive\Padding;
 
-$chart = new HorizontalBarChart(330, 170);
+$chart = new HorizontalBarChart(500, 250);
 
 $dataSet = new XYDataSet();
 $dataSet->addPoint(new Point("/wiki/Instant_messenger", 20));
@@ -63,8 +62,10 @@ $chart->setDataSet($dataSet);
 
 $chart->getPlot()->setGraphPadding(new Padding(5, 30, 20, 140));
 $chart->setTitle("Most visited pages");
-$chart->render();
+echo $chart->render();
 ```
+
+![Horizontal Bar](https://github.com/fernandowobeto/easychart/raw/master/docs/images/horizontal_bar.png)
 
 Pie Chart
 ---------
@@ -74,17 +75,21 @@ use Wobeto\EasyChart\PieChart;
 use Wobeto\EasyChart\Model\XYDataSet;
 use Wobeto\EasyChart\Model\Point;
 
-$chart = new PieChart(500, 260);
+$chart = new PieChart(500, 300);
 
 $dataSet = new XYDataSet();
-$dataSet->addPoint(new Point("Mozilla Firefox (80)", 80));
-$dataSet->addPoint(new Point("Konqueror (75)", 75));
-$dataSet->addPoint(new Point("Other (50)", 50));
+$dataSet->addPoint(new Point("Mozilla Firefox", 46));
+$dataSet->addPoint(new Point("Chrome", 40));
+$dataSet->addPoint(new Point("Internet Explorer", 12));
+$dataSet->addPoint(new Point("Others", 2));
 $chart->setDataSet($dataSet);
+$chart->setLabelFormat('%01.2f%%');
 
 $chart->setTitle("User agents for www.example.com");
-$chart->render();
+echo $chart->render();
 ```
+
+![Pie Chart](https://github.com/fernandowobeto/easychart/raw/master/docs/images/pie_chart.png)
 
 Multiple line chart
 -------------------
@@ -145,12 +150,13 @@ $dataSet->addSerie("Product 4", $serie4);
 $dataSet->addSerie("Product 5", $serie5);
 $chart->setDataSet($dataSet);
 
-$chart->setTitle("Sales for 2006");
+$chart->setTitle("Sales for 2014");
 $chart->getPlot()->setGraphCaptionRatio(0.62);
 
-$chart->render();
+echo $chart->render();
 ```
 
+![Multiple Line Chart](https://github.com/fernandowobeto/easychart/raw/master/docs/images/multiple_line_chart.png)
 
 Multiple vertical bar chart
 -------------------
@@ -178,14 +184,16 @@ $serie2->addPoint(new Point("AB", 57));
 $serie2->addPoint(new Point("SK", 52));
 
 $dataSet = new XYSeriesDataSet();
-$dataSet->addSerie("1990", $serie1);
-$dataSet->addSerie("1995", $serie2);
+$dataSet->addSerie("2013", $serie1);
+$dataSet->addSerie("2014", $serie2);
 $chart->setDataSet($dataSet);
 $chart->getPlot()->setGraphCaptionRatio(0.65);
 
 $chart->setTitle("Average family income (k$)");
-$chart->render();
+echo $chart->render();
 ```
+
+![Multiple Vertical Bar](https://github.com/fernandowobeto/easychart/raw/master/docs/images/multiple_vertical_bar_chart.png)
 
 Multiple horizontal bar chart
 -------------------
@@ -196,7 +204,7 @@ use Wobeto\EasyChart\Model\XYDataSet;
 use Wobeto\EasyChart\Model\XYSeriesDataSet;
 use Wobeto\EasyChart\Model\Point;
 
-$chart = new HorizontalBarChart(450, 250);
+$chart = new HorizontalBarChart(500, 250);
 
 $serie1 = new XYDataSet();
 $serie1->addPoint(new Point("18-24", 22));
@@ -215,6 +223,8 @@ $dataSet->addSerie("Male", $serie1);
 $dataSet->addSerie("Female", $serie2);
 $chart->setDataSet($dataSet);
 
-$chart->setTitle("Firefox vs IE users: Age");
-$chart->render();
+$chart->setTitle("Firefox vs Chrome users: Age");
+echo $chart->render();
 ```
+
+![Multiple Horizontal Bar](https://github.com/fernandowobeto/easychart/raw/master/docs/images/multiple_horizontal_bar_chart.png)
