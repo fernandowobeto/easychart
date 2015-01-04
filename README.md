@@ -65,7 +65,7 @@ $chart->setTitle("Most visited pages");
 echo $chart->render();
 ```
 
-![Horizontal Bar](https://github.com/fernandowobeto/easychart/raw/master/docs/images/horizontal_bar.png)
+![Horizontal Bar](https://github.com/fernandowobeto/easychart/raw/master/docs/images/horizontal_chart.png)
 
 Pie Chart
 ---------
