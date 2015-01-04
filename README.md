@@ -10,7 +10,7 @@ Add wobeto/easychart to your composer.json file:
 
 ```
 "require": {
-  "wobeto/easychart": "0.5.5"
+  "wobeto/easychart": "0.6.0"
 }
 ```
 
