@@ -65,7 +65,7 @@
                     $dataSetEmpty = count($serie) == 0;
                 }
             } else {
-                die("Error: unknown dataset type");
+                throw new Exception("unknown dataset type", 1);                
             }
             
             // If the dataset is empty, default some bounds
@@ -147,4 +147,3 @@
             $this->upperBound = $upperBound;
         }
      }
-?>

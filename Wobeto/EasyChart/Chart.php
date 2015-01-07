@@ -63,7 +63,8 @@
         protected function checkDataModel() {
             // Check if a dataset was defined
             if (!$this->dataSet) {
-                die("Error: No dataset defined.");
+                throw new Exception("No dataset defined", 1);
+                
             }
             
             // Maybe no points are defined, but that's ok. This will yield and empty graph with default boundaries.
@@ -120,4 +121,3 @@
             $this->plot->setTitle($title);
         }
     }
-?>

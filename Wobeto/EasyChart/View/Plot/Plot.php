@@ -418,4 +418,3 @@
             return $this->textColor;
         }
     }
-?>

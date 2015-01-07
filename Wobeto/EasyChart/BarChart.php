@@ -90,7 +90,7 @@
                     return $pointCount < $minNumberOfPoint;
                 }
             } else {
-                die("Error: unknown dataset type");
+                throw new Exception("unknown dataset type", 1);
             }
         }
 
@@ -100,7 +100,7 @@
         protected function checkDataModel() {
             // Check if a dataset was defined
             if (!$this->dataSet) {
-                die("Error: No dataset defined.");
+                throw new Exception("No dataset defined.", 1);
             }
             
             // Bar charts accept both XYDataSet and XYSeriesDataSet
@@ -115,7 +115,7 @@
                     $serie = $serieList[$i];
                     $pointCount = count($serie->getPointList());
                     if (isset($lastPointCount) && $pointCount != $lastPointCount) {
-                        die("Error: serie <" . $i . "> doesn't have the same number of points as last serie (last one: <" . $lastPointCount. ">, this one: <" . $pointCount. ">).");
+                        throw new Exception("Error: serie <" . $i . "> doesn't have the same number of points as last serie (last one: <" . $lastPointCount. ">, this one: <" . $pointCount. ">).", 1);
                     }
                     $lastPointCount = $pointCount;
                 }
@@ -123,7 +123,7 @@
                 // The dataset contains several series
                 $this->hasSeveralSerie = true;
             } else {
-                die("Error: Bar chart accept only XYDataSet and XYSeriesDataSet");
+                throw new Exception("Bar chart accept only XYDataSet and XYSeriesDataSet", 1);
             }
         }
 
@@ -174,4 +174,3 @@
             return $this->bound;
         }
     }
-?>

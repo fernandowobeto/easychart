@@ -146,4 +146,3 @@
             $this->pieColorSet = new ColorSet($colors, 0.7);
         }
     }
-?>

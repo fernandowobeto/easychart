@@ -193,8 +193,7 @@
             $labelList = $this->dataSet->getTitleList();
             
             // Create the caption
-            $caption = new Caption();
-            $caption->setPlot($this->plot);
+            $caption = new Caption($this->plot);
             $caption->setLabelList($labelList);
             
             $palette = $this->plot->getPalette();
@@ -229,4 +228,3 @@
             return $this->plot->render($fileName);
         }
     }
-?>

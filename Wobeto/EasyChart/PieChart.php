@@ -102,8 +102,7 @@
             }
             
             // Create the caption
-            $caption = new Caption();
-            $caption->setPlot($this->plot);
+            $caption = new Caption($this->plot);
             $caption->setLabelList($labelList);
             
             $palette = $this->plot->getPalette();
@@ -137,8 +136,7 @@
                     continue;
                 }
                 
-                $color        = $colorArray[$i % count($colorArray)];
-                
+                $color        = $colorArray[$i % count($colorArray)];                
                 $percentTotal += $percent;
                 $newAngle     = $percentTotal * 360 / 100;
 
@@ -234,4 +232,3 @@
             return $this->plot->render($fileName);
         }
     }
-?>

@@ -118,4 +118,3 @@
             return $this->tics;
         }
     }
-?>

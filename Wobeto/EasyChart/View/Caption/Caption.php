@@ -16,6 +16,9 @@
 
     namespace Wobeto\EasyChart\View\Caption;
 
+    use Wobeto\EasyChart\View\Plot\Plot;
+    use Wobeto\EasyChart\View\Color\ColorSet;
+
     class Caption {
         protected $labelBoxWidth = 15;
         protected $labelBoxHeight = 15;
@@ -28,6 +31,10 @@
         
         // Color set
         protected $colorSet;
+
+        public function __construct(Plot $plot){
+            $this->plot = $plot;
+        }
         
         /**
          * Render the caption.
@@ -65,15 +72,6 @@
                 $i++;
             }
         }
-
-        /**
-         * Sets the plot.
-         *
-         * @param Plot The plot
-         */
-        public function setPlot($plot) {
-            $this->plot = $plot;
-        }
         
         /**
          * Sets the label list.
@@ -82,16 +80,14 @@
          */
         public function setLabelList($labelList) {
             $this->labelList = $labelList;
-        }
-        
+        }        
         
         /**
          * Sets the color set.
          *
          * @param Array Color set
          */
-        public function setColorSet($colorSet) {
+        public function setColorSet(ColorSet $colorSet) {
             $this->colorSet = $colorSet;
         }
     }
-?>

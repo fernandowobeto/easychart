@@ -16,6 +16,8 @@
     
     namespace Wobeto\EasyChart\View\Text;
 
+    use Wobeto\EasyChart\View\Color\Color;
+
     class Text {
         public $HORIZONTAL_LEFT_ALIGN = 1;
         public $HORIZONTAL_CENTER_ALIGN = 2;
@@ -28,10 +30,9 @@
          * Creates a new text drawing helper.
          */
         public function __construct() {
-            $baseDir = dirname(__FILE__) . "/../../";
-        
+            $baseDir                 = dirname(__FILE__) . "/../../";            
             // Free low-res fonts based on Bitstream Vera <http://dejavu.sourceforge.net/wiki/>
-            $this->fontCondensed = $baseDir . "fonts/DejaVuSansCondensed.ttf";
+            $this->fontCondensed     = $baseDir . "fonts/DejaVuSansCondensed.ttf";
             $this->fontCondensedBold = $baseDir . "fonts/DejaVuSansCondensed-Bold.ttf";
         }
 
@@ -46,7 +47,7 @@
          * @param string font file name
          * @param bitfield text alignment
          */
-        public function printText($img, $px, $py, $color, $text, $fontFileName, $align = 0) {
+        public function printText($img, $px, $py, Color $color, $text, $fontFileName, $align = 0) {
             if (!($align & $this->HORIZONTAL_CENTER_ALIGN) && !($align & $this->HORIZONTAL_RIGHT_ALIGN)) {
                 $align |= $this->HORIZONTAL_LEFT_ALIGN;
             }
@@ -93,7 +94,7 @@
          * @param string text value
          * @param string font file name
          */
-        public function printCentered($img, $py, $color, $text, $fontFileName) {
+        public function printCentered($img, $py, Color $color, $text, $fontFileName) {
             $this->printText($img, imagesx($img) / 2, $py, $color, $text, $fontFileName, $this->HORIZONTAL_CENTER_ALIGN | $this->VERTICAL_CENTER_ALIGN);
         }
 
@@ -120,4 +121,3 @@
             imagettftext($img, $fontSize, $angle, $px, $py, $color->getColor($img), $fontFileName, $text);
         }
     }
-?>
