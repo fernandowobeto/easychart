@@ -14,7 +14,8 @@
      * GNU General Public License for more details.
      */
 
-    namespace Wobeto\EasyChart\View\Axis;    
+    namespace Wobeto\EasyChart\View\Axis;  
+
     class Axis {
         private $min;
         private $max;
@@ -73,8 +74,9 @@
             $this->delta = abs($this->max - $this->min);
 
             // Check for null distribution
-            if ($this->delta == 0)
+            if ($this->delta == 0){
                 $this->delta = 1;
+            }
             
             // Order of magnitude of range
             $this->magnitude = pow(10, floor(log10($this->delta)));
