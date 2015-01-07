@@ -351,7 +351,7 @@
          *
          * @param integer title padding
          */
-        public function setTitlePadding($titlePadding) {
+        public function setTitlePadding(Padding $titlePadding) {
             $this->titlePadding = $titlePadding;
         }
 
@@ -360,7 +360,7 @@
          *
          * @param integer graph padding
          */
-        public function setGraphPadding($graphPadding) {
+        public function setGraphPadding(Padding $graphPadding) {
             $this->graphPadding = $graphPadding;
         }
 
@@ -378,7 +378,7 @@
          *
          * @param integer caption padding
          */
-        public function setCaptionPadding($captionPadding) {
+        public function setCaptionPadding(Padding $captionPadding) {
             $this->captionPadding = $captionPadding;
         }
 

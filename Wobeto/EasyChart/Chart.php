@@ -18,6 +18,8 @@
 
     use Wobeto\EasyChart\Model\ChartConfig;
     use Wobeto\EasyChart\View\Plot\Plot;
+    use Wobeto\EasyChart\Model\XYDataSet;
+    use Wobeto\EasyChart\Model\XYSeriesDataSet;
 
     abstract class Chart {
         /**
@@ -80,7 +82,9 @@
          * @param dataSet The data set
          */
         public function setDataSet($dataSet) {
-            $this->dataSet = $dataSet;
+            if($dataSet instanceof XYDataSet OR $dataSet instanceof XYSeriesDataSet){
+                $this->dataSet = $dataSet;    
+            }
         }
 
         public function setLabelFormat($format){

@@ -15,6 +15,8 @@
      */
 
     namespace Wobeto\EasyChart\Model;
+
+    use Wobeto\EasyChart\Model\XYDataSet;
     
     class XYSeriesDataSet extends DataSet {
         /**
@@ -33,7 +35,7 @@
          * @param string Title (label) of the serie.
          * @param XYDataSet Serie of points to add
          */
-        public function addSerie($title, $serie) {
+        public function addSerie($title, XYDataSet $serie) {
             array_push($this->titleList, $title);
             array_push($this->serieList, $serie);
         }

@@ -15,6 +15,8 @@
      */
 
     namespace Wobeto\EasyChart\Model;
+
+    use Wobeto\EasyChart\Model\Point;
     
     class XYDataSet extends DataSet {
         private $pointList = array();
@@ -25,7 +27,7 @@
          * @param Point Point to add to the dataset
          */
         
-        public function addPoint($point) {
+        public function addPoint(Point $point) {
             array_push($this->pointList, $point);
         }
 
