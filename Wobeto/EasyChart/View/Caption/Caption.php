@@ -41,16 +41,16 @@
          */
         public function render() {
             // Get graphical obects
-            $img = $this->plot->getImg();
-            $palette = $this->plot->getPalette();
-            $text = $this->plot->getText();
-            $primitive = $this->plot->getPrimitive();
+            $img         = $this->plot->getImg();
+            $palette     = $this->plot->getPalette();
+            $text        = $this->plot->getText();
+            $primitive   = $this->plot->getPrimitive();
             
             // Get the caption area
             $captionArea = $this->plot->getCaptionArea();
-
+            
             // Get the pie color set
-            $colorSet = $this->colorSet;
+            $colorSet    = $this->colorSet;
             $colorSet->reset();
             
             $i = 0;
