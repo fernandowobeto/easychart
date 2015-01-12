@@ -2,8 +2,8 @@ EasyChart
 =========
 PHP chart library based in Libchart
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fernandowobeto/easychart/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fernandowobeto/easychart/?branch=master)
 [![Build Status](https://travis-ci.org/fernandowobeto/easychart.svg?branch=master)](https://travis-ci.org/fernandowobeto/easychart)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fernandowobeto/easychart/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fernandowobeto/easychart/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/wobeto/easychart/v/stable.svg)](https://packagist.org/packages/wobeto/easychart) [![Total Downloads](https://poser.pugx.org/wobeto/easychart/downloads.svg)](https://packagist.org/packages/wobeto/easychart) [![Latest Unstable Version](https://poser.pugx.org/wobeto/easychart/v/unstable.svg)](https://packagist.org/packages/wobeto/easychart) [![License](https://poser.pugx.org/wobeto/easychart/license.svg)](https://packagist.org/packages/wobeto/easychart)
 
 ## Features
